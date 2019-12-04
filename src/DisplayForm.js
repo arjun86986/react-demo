@@ -2,59 +2,8 @@ import React, {Component} from 'react';
 
 export default class DisplayForm extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: '',
-            name: '',
-            phoneNumber: '',
-            email: ''
-        };
-    }
-
-    onChangeId = (event) => {
-        this.setState({
-            id: event.target.value
-        });
-    }
-
-    onChangeName = (e) => {
-        this.setState({
-            name: e.target.value
-        });
-    }
-
-    onChangePhone = (e) => {
-        this.setState({
-            phoneNumber: e.target.value
-        });
-    }
-
-    onChangeEmail = (e) => {
-        this.setState({
-            email: e.target.value
-        });
-    }
-
-    onSubmit = () => {
-        const {id, name, phoneNumber, email} = this.state;
-
-        if(!id  || !name || !phoneNumber || !email) {
-            alert('Incomplete details');
-            return;
-        }
-
-        this.props.submit({id, name, phoneNumber, email});
-        this.setState({
-            id: '',
-            name: '',
-            phoneNumber: '',
-            email: ''
-        });
-    }
-
-
   render() {
+      const {id, name, phoneNumber, email} = this.props.selectedData;
       return (
         <div className="App">
             <div className="well well-small">
@@ -64,8 +13,8 @@ export default class DisplayForm extends Component {
                         ID:
                         <input 
                             className="form-control"
-                            value={this.state.id}
-                            onChange={this.onChangeId}
+                            value={id}
+                            onChange={this.props.onChangeId}
                         />
                     </label>
                 </div>
@@ -73,8 +22,8 @@ export default class DisplayForm extends Component {
                     <label>
                         Name:
                         <input className="form-control"
-                            value={this.state.name}
-                            onChange={this.onChangeName}
+                            value={name}
+                            onChange={this.props.onChangeName}
                         />
                     </label>
                 </div>
@@ -82,8 +31,8 @@ export default class DisplayForm extends Component {
                     <label>
                         Phone:
                         <input className="form-control"
-                            value={this.state.phoneNumber}
-                            onChange={this.onChangePhone}
+                            value={phoneNumber}
+                            onChange={this.props.onChangePhone}
                         />
                     </label>
                 </div>
@@ -91,15 +40,15 @@ export default class DisplayForm extends Component {
                     <label>
                         Email:
                         <input className="form-control"
-                            value={this.state.email}
-                            onChange={this.onChangeEmail}
+                            value={email}
+                            onChange={this.props.onChangeEmail}
                         />
                     </label>
                 </div>
                 <div>
                     <button 
                         className="btn btn-primary"
-                        onClick={this.onSubmit}
+                        onClick={this.props.submit}
                     >
                         Submit
                     </button>

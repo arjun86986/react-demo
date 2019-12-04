@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 export default class DisplayData extends Component {
 
-
   render() {
       return (
         <div className="App">
@@ -24,7 +23,7 @@ export default class DisplayData extends Component {
                             <td>{item.phoneNumber}</td>
                             <td>{item.email}</td>
                             <td>
-                                <span>{'Edit '}</span>
+                                <span onClick={() => this.props.onEdit(index)}>{'Edit '}</span>
                                 <span>{' Delete'}</span>
                             </td>
                         </tr>
